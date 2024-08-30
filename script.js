@@ -48,3 +48,7 @@ function obtenerDatosUsuario(id, callback) {
     callback(data)
 }
 obtenerDatosUsuario(1, data => console.log(data))
+////////////////////////////////////////////////////////////////////////////////////////////
+/* Ejercicio 5: Promesas y Callbacks 
+Modifica el ejercicio 4 para que en lugar de utilizar callbacks, utilice promesas para manejar la 
+solicitud de datos de usuario.  */
