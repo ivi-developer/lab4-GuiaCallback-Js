@@ -44,7 +44,7 @@ const getData = id => {
     }
 }
 function obtenerDatosUsuario(id, callback) {
-    data = getData(id)
+    const data = getData(id)
     callback(data)
 }
 obtenerDatosUsuario(1, data => console.log(data))
@@ -52,3 +52,20 @@ obtenerDatosUsuario(1, data => console.log(data))
 /* Ejercicio 5: Promesas y Callbacks 
 Modifica el ejercicio 4 para que en lugar de utilizar callbacks, utilice promesas para manejar la 
 solicitud de datos de usuario.  */
+function obtenerDatosUsuarioConPromise(id) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const data = getData(id)
+            data ? resolve(data) : reject('ocurrio un error obteniendo la informacion')
+        }
+            , 1500)
+    })
+}
+obtenerDatosUsuarioConPromise(1).then(result => console.log(result)).catch(e => console.log(e))//una forma de agarrar el resultado
+async function mostrarDatosUsuarioConPromiseYAwait() {//otra forma de agarrar el resultado usando asyn y await
+    try {
+        const data = await obtenerDatosUsuarioConPromise(1)
+        console.log(data)
+    } catch (e) { console.log(e) }
+}
+mostrarDatosUsuarioConPromiseYAwait()
